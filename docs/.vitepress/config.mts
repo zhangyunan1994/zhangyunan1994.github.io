@@ -13,26 +13,39 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Java8', link: '/java8/index' },
-      { text: 'Java21', link: '/java21/index' },
+      { text: 'Java8', link: '/java8/index', activeMatch: '/java8/' },
+      { text: 'Java21', link: '/java21/index', activeMatch: '/java21/' },
+      { text: 'Java 混合编程', link: '/javaMix/README', activeMatch: '/javaMix/' },
     ],
 
     sidebar: {
       '/java8/': [
         {
-          text: 'Java8',
+          text: 'Java 8',
           items: [
             { text: 'README', link: '/java8/index' },
-            { text: 'Date', link: '/java8/Date' }
+            { text: 'Date', link: '/java8/Date' },
+            { text: 'lambda', link: '/java8/lambda' },
+            { text: 'Stream', link: '/java8/Stream' },
           ]
         },
       ],
       '/java21/': [
         {
-          text: 'Java21',
+          text: 'Java 21',
           items: [
             { text: 'README', link: '/java21/index' },
             { text: 'Virtual Threads', link: '/java21/Virtual Threads' }
+          ]
+        },
+      ],
+      '/javaMix/': [
+        {
+          text: 'Java 混合编程',
+          items: [
+            { text: 'README', link: '/javaMix/README' },
+            { text: 'Groovy', link: '/javaMix/Groovy' },
+            { text: 'Kotlin', link: '/javaMix/Kotlin' },
           ]
         },
       ]
