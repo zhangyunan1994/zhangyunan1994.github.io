@@ -13,18 +13,30 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
+      { text: '个人记录', link: '/jottings/README', activeMatch: '/jottings/' },
       { text: 'Java8', link: '/java8/index', activeMatch: '/java8/' },
       { text: 'Java21', link: '/java21/index', activeMatch: '/java21/' },
       { text: 'Java 混合编程', link: '/javaMix/README', activeMatch: '/javaMix/' },
     ],
 
     sidebar: {
+      '/jottings2/': [
+        {
+          text: 'Java 8',
+          items: [
+            { text: 'README', link: '/java8/index' },
+            { text: '时间相关', link: '/java8/Date' },
+            { text: 'lambda', link: '/java8/lambda' },
+            { text: 'Stream', link: '/java8/Stream' },
+          ]
+        },
+      ],
       '/java8/': [
         {
           text: 'Java 8',
           items: [
             { text: 'README', link: '/java8/index' },
-            { text: 'Date', link: '/java8/Date' },
+            { text: '时间相关', link: '/java8/Date' },
             { text: 'lambda', link: '/java8/lambda' },
             { text: 'Stream', link: '/java8/Stream' },
           ]
@@ -35,7 +47,8 @@ export default defineConfig({
           text: 'Java 21',
           items: [
             { text: 'README', link: '/java21/index' },
-            { text: 'Virtual Threads', link: '/java21/Virtual Threads' }
+            { text: '虚拟线程 Virtual Threads', link: '/java21/Virtual Threads' },
+            { text: '结构化并发（预览）', link: '/java21/Virtual Threads' },
           ]
         },
       ],

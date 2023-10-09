@@ -19,7 +19,18 @@ features:
     icon: 🛠️
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature B
+    icon: 🛠️
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature C
+    icon: 🛠️
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Feature A
+    icon: 🛠️
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Feature B
+    icon: 🛠️
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Feature C
+    icon: 🛠️
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---

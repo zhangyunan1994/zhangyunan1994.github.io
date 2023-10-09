@@ -2,84 +2,30 @@
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
-## Syntax Highlighting
+## 更新内容介绍
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+二、Java21更新内容介绍
+官方release公告：
+https://jdk.java.net/21/release-notes
 
-**Input**
+开源中国介绍：
+https://my.oschina.net/waylau/blog/10112170
 
-````
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
+新特性一览：
 
-**Output**
+- JEP 431：序列集合
+- JEP 439：分代 ZGC
+- JEP 440：记录模式
+- JEP 441：switch 模式匹配
+- JEP 444：虚拟线程
+- JEP 449：弃用 Windows 32 位 x86 移植
+- JEP 451：准备禁止动态加载代理
+- JEP 452：密钥封装机制 API
+- JEP 430：字符串模板（预览）
+- JEP 442：外部函数和内存 API（第三次预览）
+- JEP 443：未命名模式和变量（预览）
+- JEP 445：未命名类和实例主方法（预览）
+- JEP 446：作用域值（预览）
+- JEP 453：结构化并发（预览）
+- JEP 448：Vector API（孵化器第六阶段）
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-
-## Custom Containers
-
-**Input**
-
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
