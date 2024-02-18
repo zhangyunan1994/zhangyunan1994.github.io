@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "My Project"
+  name: "张瑀楠"
   text: "A Site"
-  tagline: My great project tagline
+  tagline: 骑摩托不会堵车
   actions:
     - theme: brand
       text: Markdown Examples

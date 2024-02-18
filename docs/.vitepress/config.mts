@@ -14,20 +14,30 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: '个人记录', link: '/jottings/README', activeMatch: '/jottings/' },
+      { text: 'Go', link: '/go/README', activeMatch: '/go/' },
+      { text: 'Netty', link: '/netty/README', activeMatch: '/netty/' },
       { text: 'Java8', link: '/java8/index', activeMatch: '/java8/' },
       { text: 'Java21', link: '/java21/index', activeMatch: '/java21/' },
       { text: 'Java 混合编程', link: '/javaMix/README', activeMatch: '/javaMix/' },
     ],
 
     sidebar: {
-      '/jottings2/': [
+      '/jottings/': [
         {
-          text: 'Java 8',
+          text: '一千零一夜',
           items: [
-            { text: 'README', link: '/java8/index' },
-            { text: '时间相关', link: '/java8/Date' },
+            { text: '第一夜 总纲', link: '/jottings/01 第一夜 总纲' },
             { text: 'lambda', link: '/java8/lambda' },
             { text: 'Stream', link: '/java8/Stream' },
+          ]
+        },
+      ],
+      '/go/': [
+        {
+          text: 'Go',
+          items: [
+            { text: '第一夜 总纲', link: '/go/' },
+            { text: 'Gin 解决跨域问题跨域配置', link: '/java8/Gin 解决跨域问题跨域配置' },
           ]
         },
       ],
