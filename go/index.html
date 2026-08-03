@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go | Gin 解决跨域问题跨域配置 | 张瑀楠</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">张瑀楠</a>
+    <nav class="nav-links">
+      <a href="/">首页</a>
+      <a href="/jottings/">一千零一夜</a>
+      <a href="/java8/">Java 8</a>
+      <a href="/java21/">Java 21</a>
+      <a href="/java-mix/">Java 混合编程</a>
+      <a href="/go/" class="active">Go</a>
+    </nav>
+  </div>
+</header>
+<div class="layout">
+
+    <aside class="sidebar">
+      <div class="sidebar-title">Go</div>
+      <ul>
+        <li><a href="/go/" class="active">Gin 解决跨域问题跨域配置</a></li>
+      </ul>
+    </aside>
+  <main class="content">
+<h1>Go | Gin 解决跨域问题跨域配置</h1>
+<hr>
+<h1>前言</h1>
+<p>在前后端分离的项目中，经常会遇到跨域问题，遇到问题该如何解决呢？！</p>
+<h1>一、关于跨域解决方案</h1>
+<p>关于跨域的解决方法，大部分可以分为 2 种</p>
+<ol><li>nginx反向代理解决跨域</li><li>服务端设置Response Header(响应头部)的<code>Access-Control-Allow-Origin</code></li></ol>
+<p>对于后端开发来说，第 2 种的操作性更新灵活，这里也讲一下 Gin 是如何做到的</p>
+<h1>二、使用步骤</h1>
+<p>在 Gin 中提供了 middleware (中间件) 来做到在一个请求前后处理响应的逻辑，这里我们使用中间来做到在每次请求是添加上 <code>Access-Control-Allow-Origin</code> 头部</p>
+<h2>1. 编写一个中间件</h2>
+<p>可以 <code>middlewares</code> 包下创建</p>
+<pre><code>package middlewares
+
+import (
+	&quot;github.com/gin-gonic/gin&quot;
+	&quot;net/http&quot;
+)
+
+func Cors() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		method := c.Request.Method
+    origin := c.Request.Header.Get(&quot;Origin&quot;)
+		if origin != &quot;&quot; {
+			c.Header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;)  // 可将将 * 替换为指定的域名
+			c.Header(&quot;Access-Control-Allow-Methods&quot;, &quot;POST, GET, OPTIONS, PUT, DELETE, UPDATE&quot;)
+			c.Header(&quot;Access-Control-Allow-Headers&quot;, &quot;Origin, X-Requested-With, Content-Type, Accept, Authorization&quot;)
+			c.Header(&quot;Access-Control-Expose-Headers&quot;, &quot;Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Cache-Control, Content-Language, Content-Type&quot;)
+			c.Header(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;)
+		}
+		if method == &quot;OPTIONS&quot; {
+			c.AbortWithStatus(http.StatusNoContent)
+		}
+		c.Next()
+	}
+}
+</code></pre>
+<h2>2. 使用</h2>
+<pre><code>r := gin.Default()
+
+r.Use(middlewares.Cors())
+</code></pre>
+<h2>3. 注意事项</h2>
+<p>需要将 <code>r.Use(middlewares.Cors())</code> 在使用路由前进行设置，否则会导致不生效</p>
+<p><strong>反例</strong></p>
+<pre><code>r := gin.Default()
+pingGroup := r.Group(&quot;ping&quot;)
+{
+	pingGroup.GET(&quot;/&quot;, Ping)
+}
+r.Use(middlewares.Cors())
+</code></pre>
+<p>这样会导致跨域配置不生效</p>
+  </main>
+</div>
+<footer class="footer">
+  <p>© 2023-present zhangyunan · 骑摩托不会堵车</p>
+</footer>
+</body>
+</html>
