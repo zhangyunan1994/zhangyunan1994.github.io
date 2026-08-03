@@ -8,6 +8,7 @@
 import html
 import os
 import re
+import shutil
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -327,6 +328,13 @@ def main():
     ]
     for src, out, section in pages:
         convert(src, out, section)
+
+    src_img = os.path.join(BASE, "docs/jottings/img")
+    dst_img = os.path.join(BASE, "jottings/img")
+    if os.path.isdir(src_img):
+        shutil.rmtree(dst_img, ignore_errors=True)
+        shutil.copytree(src_img, dst_img)
+        print(f"  sync img: docs/jottings/img -> jottings/img")
 
 
 if __name__ == "__main__":
